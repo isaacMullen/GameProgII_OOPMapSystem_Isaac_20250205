@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameProgII_OOPMapSystem_Isaac_20250205", "GameProgII_OOPMapSystem_Isaac_20250205.csproj", "{F1AD1CC0-19ED-49EC-8205-AC177F8ED258}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1AD1CC0-19ED-49EC-8205-AC177F8ED258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1AD1CC0-19ED-49EC-8205-AC177F8ED258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1AD1CC0-19ED-49EC-8205-AC177F8ED258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1AD1CC0-19ED-49EC-8205-AC177F8ED258}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7EE8CBF0-6B65-4C8F-BF7B-482E633B04AA}
+	EndGlobalSection
+EndGlobal
