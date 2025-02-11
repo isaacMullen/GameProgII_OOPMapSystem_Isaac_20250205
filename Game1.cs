@@ -20,11 +20,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             IsMouseVisible = true;      
             
             _graphics.PreferredBackBufferWidth = 640;
-            _graphics.PreferredBackBufferHeight = 360;
-
-            
-
-            
+            _graphics.PreferredBackBufferHeight = 360;                        
         }
 
         protected override void Initialize()
@@ -40,13 +36,14 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
 
             tileManager = new(Content);
             
-            //finding the .csv file. searching based on project setup (assumes .csv lives inside the main .csproj folder)
+            //finding the relative path of the CSV file. searching based on project setup (assumes .csv lives inside the main .csproj folder)
             string currentDir = Directory.GetCurrentDirectory();
             
             string projectDir = Directory.GetParent(currentDir).Parent.Parent.FullName;
                        
             tileManager.filePath = Path.Combine(projectDir, "map.csv");
 
+            //test
             Console.WriteLine("File path: " + tileManager.filePath);
         }
 
