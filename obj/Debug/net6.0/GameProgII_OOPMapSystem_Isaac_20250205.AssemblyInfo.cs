@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameProgII_OOPMapSystem_Isaac_20250205")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69844f4123b29a9d4cbf18357bc83a8b35acac96")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameProgII_OOPMapSystem_Isaac_20250205")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameProgII_OOPMapSystem_Isaac_20250205")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.IO;
 
 namespace GameProgII_OOPMapSystem_Isaac_20250205
 {
@@ -15,7 +17,14 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;            
+            IsMouseVisible = true;      
+            
+            _graphics.PreferredBackBufferWidth = 640;
+            _graphics.PreferredBackBufferHeight = 360;
+
+            
+
+            
         }
 
         protected override void Initialize()
@@ -30,6 +39,15 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             tileManager = new(Content);
+            
+            //finding the .csv file. searching based on project setup (assumes .csv lives inside the main .csproj folder)
+            string currentDir = Directory.GetCurrentDirectory();
+            
+            string projectDir = Directory.GetParent(currentDir).Parent.Parent.FullName;
+                       
+            tileManager.filePath = Path.Combine(projectDir, "map.csv");
+
+            Console.WriteLine("File path: " + tileManager.filePath);
         }
 
         protected override void Update(GameTime gameTime)

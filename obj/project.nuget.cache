@@ -1,15 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZR5i+Kevsco=",
+  "dgSpecHash": "mo7u8x8Q1Yw=",
   "success": true,
-  "projectFilePath": "C:\\Isaacs Programming Projects\\GameProgII_OOPMapSystem_Isaac_20250205\\GameProgII_OOPMapSystem_Isaac_20250205.csproj",
+  "projectFilePath": "E:\\class\\CLASS PROJECTS\\Non-Unity\\In Progress\\GameProgII_OOPMapSystem_Isaac_20250205\\GameProgII_OOPMapSystem_Isaac_20250205.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\W0499474\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\W0499474\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\W0499474\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.33\\microsoft.windowsdesktop.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\W0499474\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.33\\microsoft.netcore.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\W0499474\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.33\\microsoft.aspnetcore.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\W0499474\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.33\\microsoft.netcore.app.host.win-x64.6.0.33.nupkg.sha512"
+    "C:\\Users\\isaac\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\isaac\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": []
 }
