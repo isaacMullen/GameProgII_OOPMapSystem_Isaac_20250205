@@ -11,6 +11,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             Grass,
             Dirt,
             Border,
+            Exit,
         }
 
         public enum TileStatus

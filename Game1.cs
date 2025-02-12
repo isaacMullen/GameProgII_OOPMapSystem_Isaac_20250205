@@ -13,6 +13,11 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
 
         TileManager tileManager;
 
+        Texture2D playerTexture;      
+        //player will remain null until the map is drawn and the List of walkable tiles is full
+        Player player = null;
+       
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -20,13 +25,12 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             IsMouseVisible = true;      
             
             _graphics.PreferredBackBufferWidth = 640;
-            _graphics.PreferredBackBufferHeight = 360;                        
+            _graphics.PreferredBackBufferHeight = 360;            
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
+            tileManager = new(Content);
             base.Initialize();
         }
 
@@ -34,17 +38,30 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            tileManager = new(Content);
-            
+
+
             //finding the relative path of the CSV file. searching based on project setup (assumes .csv lives inside the main .csproj folder)
             string currentDir = Directory.GetCurrentDirectory();
-            
             string projectDir = Directory.GetParent(currentDir).Parent.Parent.FullName;
-                       
-            tileManager.filePath = Path.Combine(projectDir, "map.csv");
 
+            // Combine the path with the 'maps' folder
+            string mapsFolderPath = Path.Combine(projectDir, "maps");
+
+            if(Directory.Exists(mapsFolderPath))
+            {
+                string[] files = Directory.GetFiles(mapsFolderPath);
+                
+                foreach(var file in files)
+                {
+                    tileManager.maps.Add(file);
+                }
+            }
             //test
             Console.WriteLine("File path: " + tileManager.filePath);
+
+            //loading player
+            playerTexture = Content.Load<Texture2D>("tile_0160");            
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -52,8 +69,14 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            tileManager.LoadMapFromFile(tileManager.filePath);
+            //if the player is still null and the walkable tiles list has entries, we spawn then player
+            if(player == null && tileManager.walkableTiles.Count > 0)
+            {
+                player = new("Player", playerTexture, tileManager);
+            }
 
+            player?.Update();
+            
             base.Update(gameTime);
         }
 
@@ -63,6 +86,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
 
             _spriteBatch.Begin();
             tileManager.Draw(_spriteBatch);
+            player?.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);
