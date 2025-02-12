@@ -36,9 +36,9 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
 
         protected override void LoadContent()
         {
+            
+
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-
 
             //finding the relative path of the CSV file. searching based on project setup (assumes .csv lives inside the main .csproj folder)
             string currentDir = Directory.GetCurrentDirectory();
@@ -56,9 +56,9 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
                     tileManager.maps.Add(file);
                 }
             }
-            //test
-            Console.WriteLine("File path: " + tileManager.filePath);
-
+            //------------------------INITIALLY LOADING THE MAP (BOOL TOGGLE FOR GENERATION VS LOADING FROM FILES)------------------------
+            tileManager.CacheMapData(true);
+            
             //loading player
             playerTexture = Content.Load<Texture2D>("tile_0160");            
             
@@ -69,11 +69,12 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //if the player is still null and the walkable tiles list has entries, we spawn then player
+            //if the player is still null and the walkable tiles list has entries, we spawn the player
             if(player == null && tileManager.walkableTiles.Count > 0)
             {
                 player = new("Player", playerTexture, tileManager);
             }
+            
 
             player?.Update();
             
@@ -88,8 +89,12 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             tileManager.Draw(_spriteBatch);
             player?.Draw(_spriteBatch);
             _spriteBatch.End();
-
             base.Draw(gameTime);
+        }
+
+        void RetrieveMaps()
+        {
+
         }
     }
 }
