@@ -35,16 +35,14 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
         }
 
         protected override void LoadContent()
-        {
-            
-
+        {            
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //finding the relative path of the CSV file. searching based on project setup (assumes .csv lives inside the main .csproj folder)
             string currentDir = Directory.GetCurrentDirectory();
             string projectDir = Directory.GetParent(currentDir).Parent.Parent.FullName;
 
-            // Combine the path with the 'maps' folder
+            //combine the path with the 'maps' folder
             string mapsFolderPath = Path.Combine(projectDir, "maps");
 
             if(Directory.Exists(mapsFolderPath))
@@ -57,7 +55,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
                 }
             }
             //------------------------INITIALLY LOADING THE MAP (BOOL TOGGLE FOR GENERATION VS LOADING FROM FILES)------------------------
-            tileManager.CacheMapData(true);
+            tileManager.CacheMapData(false);
             
             //loading player
             playerTexture = Content.Load<Texture2D>("tile_0160");            
@@ -75,7 +73,6 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
                 player = new("Player", playerTexture, tileManager);
             }
             
-
             player?.Update();
             
             base.Update(gameTime);
@@ -89,12 +86,8 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             tileManager.Draw(_spriteBatch);
             player?.Draw(_spriteBatch);
             _spriteBatch.End();
+            
             base.Draw(gameTime);
-        }
-
-        void RetrieveMaps()
-        {
-
-        }
+        }       
     }
 }

@@ -25,6 +25,11 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
         const int tileWidth = 16;
         const int tileHeight = 16;
 
+        char tileValue;
+        Tile tile;
+
+        Vector2 position;
+
         private Dictionary<Tile.TileType, Tile> tileData;
 
         private Texture2D tileAtlas;
@@ -33,7 +38,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
         public List<Vector2> walkableTiles = new();
         public List<Vector2> exitTiles = new();
 
-        //string basePath = AppDomain.CurrentDomain.BaseDirectory;
+        private List<(Tile, Vector2)> tilesToDraw = new(); 
 
         public List<string> maps = new();
 
@@ -88,7 +93,15 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             {
                 for (int j = 0; j < cols; j++)
                 {                    
-                    tileArray[i, j] = lines[i][j];                                                                                                                       
+                    tileArray[i, j] = lines[i][j];
+
+                    tileValue = tileArray[i, j];
+                    tile = ConverCharToTile(tileValue);
+
+                    position = new Vector2(j * tileWidth, i * tileHeight);
+
+                    tilesToDraw.Add((tile, position));
+                    CacheTilePosition(tile, position);
                 }
             }                                    
             
@@ -119,6 +132,8 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             {
                 for (int j = 0; j < cols; j++)
                 {
+                    
+
                     if (i == exitSpawnPoint.X && j == exitSpawnPoint.Y)
                     {
                         tileArray[i, j] = 'E';
@@ -133,6 +148,14 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
                     {                        
                         tileArray[i, j] = RandomizeTile('1', '0');
                     }
+
+                    tileValue = tileArray[i, j];
+                    tile = ConverCharToTile(tileValue);
+
+                    position = new Vector2(j * tileWidth, i * tileHeight);
+
+                    tilesToDraw.Add((tile, position));
+                    CacheTilePosition(tile, position);
                 }
             }
 
@@ -171,25 +194,12 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
 
         //method to draw each tile from a given 2D character array in the correct size and position
         public void Draw(SpriteBatch spriteBatch)
-        {                                                       
-            //looping through each row and column
-            for (int row = 0; row < currentMap.GetLength(0); row++)
-            {
-                for (int col = 0; col < currentMap.GetLength(1); col++)
-                {                    
-                    //converting the current value in the row/column of the array to a Tile 
-                    char tileValue = currentMap[row, col];
-                    Tile tile = ConverCharToTile(tileValue);
-                                                                                
-                    //determing the position to write the tiles at using their dimensions and the position in the array               
-                    Vector2 position = new Vector2(col * tileWidth, row * tileHeight);
-
-                    CacheTilePosition(tile, position);
-                    
-                    //Debug.WriteLine(sourceRect);
-                    spriteBatch.Draw(tileAtlas, position, tile.SourceRect, Color.White);
-                }
-            }
+        {
+            Console.WriteLine("Drawing");
+            foreach(var tile in tilesToDraw)
+            {                
+                spriteBatch.Draw(tileAtlas, tile.Item2, tile.Item1.SourceRect, Color.White);
+            }                                       
         }
         
         public void CacheTilePosition(Tile tile, Vector2 position)
@@ -210,9 +220,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
             if (tile.Type == Tile.TileType.Exit)
             {
                 exitTiles.Add(position);                
-            }
-
-            
+            }            
         }
 
         /// <summary>

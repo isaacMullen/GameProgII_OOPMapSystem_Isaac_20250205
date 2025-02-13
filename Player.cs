@@ -70,7 +70,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
                     // Only respawn when tiles are available
 
                     //----------------------------ACTUALLY GENERATING THE MAP (BOOL FOR GENERATION OR LOADING OF FILES)----------------------------
-                    tileManager.CacheMapData(true);
+                    tileManager.CacheMapData(false);
                     Position = Respawn(tileManager.walkableTiles);
                     transitioningMaps = false;
                     
@@ -143,7 +143,7 @@ namespace GameProgII_OOPMapSystem_Isaac_20250205
                 isMoving = true;
             }
 
-            // Store the current state for the next frame
+            //storing the current state for the next frame
             previousKeyboardState = keyboardState;
         }
 
